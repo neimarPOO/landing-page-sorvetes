@@ -1,0 +1,224 @@
+:root {
+    --bg-white: #ffffff;
+    --primary-purple: #a855f7;
+    --primary-orange: #ff7e5f;
+    --primary-green: #86efac;
+    --primary-yellow: #fde047;
+    --black: #000000;
+    --border-width: 3px;
+    --shadow-offset: 4px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+    background-color: var(--bg-white);
+    color: var(--black);
+    overflow-x: hidden;
+}
+
+/* Neo-brutalist Accents */
+.top-bar {
+    background-color: var(--primary-purple);
+    border-bottom: var(--border-width) solid var(--black);
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.hero-section {
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: var(--border-width) solid var(--black);
+}
+
+.hero-image-container {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    border: var(--border-width) solid var(--black);
+    box-shadow: 10px 10px 0 var(--black);
+    background: white;
+    line-height: 0;
+}
+
+.hero-main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    font-weight: 700;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.event-details {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.detail-item {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+/* Form Section */
+.form-section {
+    padding: 60px 20px;
+    background-color: #f3f4f6;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-header h3 {
+    display: inline-block;
+    background-color: var(--primary-purple);
+    color: white;
+    padding: 10px 40px;
+    font-size: 1.5rem;
+    border: var(--border-width) solid var(--black);
+    box-shadow: 6px 6px 0 var(--black);
+}
+
+.neobrutalist-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border: var(--border-width) solid var(--black);
+    box-shadow: 12px 12px 0 var(--black);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-weight: 900;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 15px;
+    border: var(--border-width) solid var(--black);
+    background-color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 4px 4px 0 var(--black);
+    transition: all 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: 6px 6px 0 var(--primary-purple);
+    background-color: #fafafa;
+}
+
+.two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 20px;
+    background-color: var(--primary-purple);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 900;
+    border: var(--border-width) solid var(--black);
+    box-shadow: 6px 6px 0 var(--black);
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.submit-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--black);
+}
+
+.submit-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0 var(--black);
+}
+
+/* Footer */
+.footer {
+    border-top: var(--border-width) solid var(--black);
+    padding: 40px;
+    background-color: var(--primary-purple);
+    color: white;
+    text-align: center;
+}
+
+.address-box {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    background-color: rgba(255,255,255,0.1);
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid white;
+}
+
+.footer-logo {
+    max-width: 200px;
+    filter: brightness(0) invert(1);
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#responseMessage {
+    margin-top: 20px;
+    padding: 20px;
+    border: var(--border-width) solid var(--black);
+    font-weight: 900;
+    text-align: center;
+}
+
+.success {
+    background-color: var(--primary-green);
+    color: var(--black);
+}
+
+.error {
+    background-color: #f87171;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .two-cols {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .logo-text {
+        font-size: 2rem;
+    }
+}

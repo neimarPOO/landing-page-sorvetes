@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola Startup | FoodMakers | Pré-Inscrições</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="top-bar">
+        <div class="contact-info">
+            <span>📧 es2@calabria.com.br</span>
+            <span>📞 51 9802-02116</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-image-container">
+                <img src="hero.png" alt="Escola Startup - FoodMakers" class="hero-main-image">
+            </div>
+            
+            <p class="hero-description">
+                É GASTRONOMIA E TECNOLOGIA PARA VOCÊ COMEÇAR SEU NEGÓCIO AGORA. COLA AÍ!
+            </p>
+
+            <div class="event-details">
+                <div class="detail-item">
+                    <span class="icon">📅</span>
+                    <span class="text">09, 11 E 13 DE FEVEREIRO</span>
+                </div>
+                <div class="detail-item">
+                    <span class="icon">⏰</span>
+                    <span class="text">08:30 ÀS 11:30</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <div class="form-header">
+                <h3>INSCREVA-SE:</h3>
+            </div>
+            <form id="registrationForm" class="neobrutalist-form">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome aqui..." required>
+                </div>
+                
+                <div class="two-cols">
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(51) 99999-9999" required>
+                    </div>
+                </div>
+
+                <div class="two-cols">
+                    <div class="form-group">
+                        <label for="idade">Idade (15 a 18 anos)</label>
+                        <input type="number" id="idade" name="idade" min="15" max="18" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bairro">Bairro</label>
+                        <select id="bairro" name="bairro" required>
+                            <option value="">Selecione...</option>
+                            <option value="Bom Jesus">Bom Jesus</option>
+                            <option value="Navegantes">Navegantes</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivacao">Por que você quer participar do FoodMakers?</label>
+                    <textarea id="motivacao" name="motivacao" rows="4" placeholder="Conte um pouco sobre suas motivações..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">ENVIAR INSCRIÇÃO</button>
+            </form>
+            <div id="responseMessage" class="hidden"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="address-box">
+            <span>RUA 13, 64, BOM JESUS</span>
+        </div>
+        <div class="brand-footer">
+            <img src="https://calabria.com.br/wp-content/uploads/2021/08/logo-rede-calabria-horizontal.png" alt="Rede Calábria" class="footer-logo">
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
