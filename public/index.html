@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escola Startup | FoodMakers | Pré-Inscrições</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header class="top-bar">
-        <div class="contact-info">
-            <span>📧 es2@calabria.com.br</span>
-            <span>📞 51 9802-02116</span>
+        <div class="nav-container">
+            <a href="/" class="nav-logo-link">
+                <img src="LogoRedeCalabria.png" alt="Rede Calábria" class="nav-logo">
+            </a>
+            <div class="contact-info">
+                <a href="mailto:es2@calabria.com.br" class="contact-link">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail"
+                        class="icon-small">
+                    <span>es2@calabria.com.br</span>
+                </a>
+                <a href="https://wa.me/5551980202116" target="_blank" class="contact-link">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                        class="icon-small">
+                    <span>51 980202116</span>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -20,7 +36,21 @@
             <div class="hero-image-container">
                 <img src="hero.png" alt="Escola Startup - FoodMakers" class="hero-main-image">
             </div>
-            
+
+            <div class="workshop-title-container">
+                <div class="title-box purple-box">
+                    <h2 class="title-text">OFICINA DE</h2>
+                </div>
+                <div class="title-row">
+                    <div class="title-box green-box">
+                        <h2 class="title-text big-text">SORVETES</h2>
+                    </div>
+                    <div class="title-box secondary-green-box rotated-text">
+                        <h2 class="title-text">SUSTENTÁVEIS</h2>
+                    </div>
+                </div>
+            </div>
+
             <p class="hero-description">
                 É GASTRONOMIA E TECNOLOGIA PARA VOCÊ COMEÇAR SEU NEGÓCIO AGORA. COLA AÍ!
             </p>
@@ -46,7 +76,7 @@
                     <label for="nome">Nome Completo</label>
                     <input type="text" id="nome" name="nome" placeholder="Seu nome aqui..." required>
                 </div>
-                
+
                 <div class="two-cols">
                     <div class="form-group">
                         <label for="email">E-mail</label>
@@ -76,7 +106,8 @@
 
                 <div class="form-group">
                     <label for="motivacao">Por que você quer participar do FoodMakers?</label>
-                    <textarea id="motivacao" name="motivacao" rows="4" placeholder="Conte um pouco sobre suas motivações..." required></textarea>
+                    <textarea id="motivacao" name="motivacao" rows="4"
+                        placeholder="Conte um pouco sobre suas motivações..." required></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">ENVIAR INSCRIÇÃO</button>
@@ -86,14 +117,24 @@
     </main>
 
     <footer class="footer">
-        <div class="address-box">
-            <span>RUA 13, 64, BOM JESUS</span>
-        </div>
-        <div class="brand-footer">
-            <img src="https://calabria.com.br/wp-content/uploads/2021/08/logo-rede-calabria-horizontal.png" alt="Rede Calábria" class="footer-logo">
+        <div class="footer-container">
+            <div class="address-box">
+                <span>RUA 13, 64, BOM JESUS</span>
+            </div>
+            <div class="brand-footer">
+                <img src="LogoRedeCalabria.png" alt="Rede Calábria" class="footer-logo">
+            </div>
+            <div class="footer-contacts">
+                <a href="https://wa.me/5551980202116" target="_blank" class="whatsapp-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                        class="icon-medium">
+                    <span>WHATSAPP: 51 980202116</span>
+                </a>
+            </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>

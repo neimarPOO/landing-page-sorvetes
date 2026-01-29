@@ -28,10 +28,45 @@ body {
     border-bottom: var(--border-width) solid var(--black);
     padding: 10px 20px;
     color: white;
-    font-weight: bold;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
-    gap: 30px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-logo {
+    height: 48px;
+    /* Slightly larger for better visibility */
+}
+
+.contact-info {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.contact-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.contact-link:hover {
+    transform: scale(1.05);
+}
+
+.icon-small {
+    width: 20px;
+    height: 20px;
 }
 
 .hero-section {
@@ -59,7 +94,72 @@ body {
     font-size: 1.2rem;
     font-weight: 700;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 30px auto;
+    text-transform: uppercase;
+}
+
+/* Workshop Title Styles */
+.workshop-title-container {
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 600px;
+}
+
+.title-box {
+    border: var(--border-width) solid var(--black);
+    padding: 10px 30px;
+    box-shadow: 6px 6px 0 var(--black);
+    display: inline-block;
+}
+
+.purple-box {
+    background-color: var(--primary-purple);
+    transform: rotate(-2deg);
+    align-self: flex-start;
+    margin-left: 10%;
+    z-index: 2;
+}
+
+.green-box {
+    background-color: var(--primary-green);
+    transform: rotate(1deg);
+    z-index: 1;
+}
+
+.secondary-green-box {
+    background-color: #4ade80;
+    padding: 5px 15px;
+    margin-left: -20px;
+    align-self: flex-end;
+    transform: rotate(10deg);
+    position: relative;
+    z-index: 3;
+    /* Elevated above other boxes */
+}
+
+.title-text {
+    color: white;
+    font-weight: 900;
+    margin: 0;
+    text-shadow: 2px 2px 0 var(--black);
+}
+
+.big-text {
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rotated-text .title-text {
+    font-size: 0.9rem;
 }
 
 .event-details {
@@ -116,7 +216,9 @@ label {
     font-size: 0.9rem;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     width: 100%;
     padding: 15px;
     border: var(--border-width) solid var(--black);
@@ -127,7 +229,9 @@ input, select, textarea {
     transition: all 0.2s ease;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
     outline: none;
     box-shadow: 6px 6px 0 var(--primary-purple);
     background-color: #fafafa;
@@ -165,26 +269,63 @@ input:focus, select:focus, textarea:focus {
 /* Footer */
 .footer {
     border-top: var(--border-width) solid var(--black);
-    padding: 40px;
+    padding: 40px 20px;
     background-color: var(--primary-purple);
     color: white;
     text-align: center;
 }
 
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
 .address-box {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 900;
-    margin-bottom: 20px;
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     display: inline-block;
     padding: 10px 20px;
     border: 2px solid white;
 }
 
 .footer-logo {
-    max-width: 200px;
-    filter: brightness(0) invert(1);
-    margin-top: 20px;
+    max-width: 280px;
+    /* Slightly larger */
+}
+
+.footer-contacts {
+    margin-top: 10px;
+}
+
+.whatsapp-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    border: var(--border-width) solid var(--black);
+    box-shadow: 6px 6px 0 var(--black);
+    transition: all 0.1s;
+}
+
+.whatsapp-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--black);
+}
+
+.icon-medium {
+    width: 30px;
+    height: 30px;
 }
 
 .hidden {
@@ -213,11 +354,11 @@ input:focus, select:focus, textarea:focus {
     .two-cols {
         grid-template-columns: 1fr;
     }
-    
+
     .main-title {
         font-size: 2.5rem;
     }
-    
+
     .logo-text {
         font-size: 2rem;
     }
