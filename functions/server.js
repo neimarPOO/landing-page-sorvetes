@@ -47,8 +47,10 @@ router.post('/subscribe', async (req, res) => {
 // Admin API Fetch submissions (Separated from CRUD to avoid method/path conflict)
 router.post('/admin/fetch', async (req, res) => {
     const { password } = req.body;
+    const adminPassword = (process.env.ADMIN_PASSWORD || '').trim();
 
-    if (password !== process.env.ADMIN_PASSWORD) {
+    if (!password || password.trim() !== adminPassword) {
+        console.log('Login attempt failed: password mismatch or missing.');
         return res.status(401).json({ error: 'Senha incorreta.' });
     }
 
@@ -73,8 +75,9 @@ router.post('/admin/fetch', async (req, res) => {
 // Admin API: Create submission
 router.post('/admin/submissions', async (req, res) => {
     const { password, submission } = req.body;
+    const adminPassword = (process.env.ADMIN_PASSWORD || '').trim();
 
-    if (password !== process.env.ADMIN_PASSWORD) {
+    if (!password || password.trim() !== adminPassword) {
         return res.status(401).json({ error: 'Senha incorreta.' });
     }
 
@@ -100,8 +103,9 @@ router.post('/admin/submissions', async (req, res) => {
 router.put('/admin/submissions/:id', async (req, res) => {
     const { password, submission } = req.body;
     const { id } = req.params;
+    const adminPassword = (process.env.ADMIN_PASSWORD || '').trim();
 
-    if (password !== process.env.ADMIN_PASSWORD) {
+    if (!password || password.trim() !== adminPassword) {
         return res.status(401).json({ error: 'Senha incorreta.' });
     }
 
@@ -128,8 +132,9 @@ router.put('/admin/submissions/:id', async (req, res) => {
 router.delete('/admin/submissions/:id', async (req, res) => {
     const { password } = req.body;
     const { id } = req.params;
+    const adminPassword = (process.env.ADMIN_PASSWORD || '').trim();
 
-    if (password !== process.env.ADMIN_PASSWORD) {
+    if (!password || password.trim() !== adminPassword) {
         return res.status(401).json({ error: 'Senha incorreta.' });
     }
 

@@ -13,7 +13,7 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ password }),
+            body: JSON.stringify({ password: password.trim() }),
         });
 
         if (response.ok) {
