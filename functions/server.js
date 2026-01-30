@@ -44,8 +44,8 @@ router.post('/subscribe', async (req, res) => {
     }
 });
 
-// Admin API Fetch submissions
-router.post('/admin/submissions', async (req, res) => {
+// Admin API Fetch submissions (Separated from CRUD to avoid method/path conflict)
+router.post('/admin/fetch', async (req, res) => {
     const { password } = req.body;
 
     if (password !== process.env.ADMIN_PASSWORD) {
@@ -71,7 +71,7 @@ router.post('/admin/submissions', async (req, res) => {
 });
 
 // Admin API: Create submission
-router.post('/admin/create-submission', async (req, res) => {
+router.post('/admin/submissions', async (req, res) => {
     const { password, submission } = req.body;
 
     if (password !== process.env.ADMIN_PASSWORD) {
@@ -151,6 +151,8 @@ router.delete('/admin/submissions/:id', async (req, res) => {
     }
 });
 
+// Primary route handler for Netlify
+app.use('/api', router);
 app.use('/.netlify/functions/server', router);
 
 module.exports = app;

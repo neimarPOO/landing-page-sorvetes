@@ -8,7 +8,7 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
     const submissionsBody = document.getElementById('submissionsBody');
 
     try {
-        const response = await fetch('/api/admin/submissions', {
+        const response = await fetch('/api/admin/fetch', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
