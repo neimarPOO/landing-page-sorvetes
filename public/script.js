@@ -41,3 +41,35 @@ document.getElementById('registrationForm').addEventListener('submit', async (e)
         responseMessage.scrollIntoView({ behavior: 'smooth' });
     }
 });
+// Schedule Modal Logic
+const scheduleModal = document.getElementById('scheduleModal');
+const showScheduleBtn = document.getElementById('showSchedule');
+const closeScheduleBtn = document.getElementById('closeSchedule');
+
+if (showScheduleBtn && scheduleModal && closeScheduleBtn) {
+    showScheduleBtn.addEventListener('click', () => {
+        scheduleModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    });
+
+    closeScheduleBtn.addEventListener('click', () => {
+        scheduleModal.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+
+    // Close on click outside the content
+    scheduleModal.addEventListener('click', (e) => {
+        if (e.target === scheduleModal) {
+            scheduleModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close on Escape key
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !scheduleModal.classList.contains('hidden')) {
+            scheduleModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    });
+}

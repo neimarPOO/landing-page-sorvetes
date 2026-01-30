@@ -2,11 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
+const serverless = require('serverless-http');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const router = express.Router();
 
 // Supabase configuration
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -16,10 +16,9 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 // API Endpoint to handle form submission
-app.post('/api/subscribe', async (req, res) => {
+router.post('/subscribe', async (req, res) => {
     const { nome, email, whatsapp, idade, bairro, motivacao } = req.body;
 
     if (!nome || !email || !whatsapp || !idade || !bairro || !motivacao) {
@@ -35,8 +34,6 @@ app.post('/api/subscribe', async (req, res) => {
 
         if (error) {
             console.error('Supabase error:', error);
-            // If table doesn't exist, we might want to log it or handle it, 
-            // but for now let's assume it exists or will be created.
             return res.status(500).json({ error: 'Erro ao salvar os dados no banco.' });
         }
 
@@ -47,8 +44,8 @@ app.post('/api/subscribe', async (req, res) => {
     }
 });
 
-// Admin API Endpoint
-app.post('/api/admin/submissions', async (req, res) => {
+// Admin API Fetch submissions
+router.post('/admin/submissions', async (req, res) => {
     const { password } = req.body;
 
     if (password !== process.env.ADMIN_PASSWORD) {
@@ -74,7 +71,7 @@ app.post('/api/admin/submissions', async (req, res) => {
 });
 
 // Admin API: Create submission
-app.post('/api/admin/submissions', async (req, res) => {
+router.post('/admin/create-submission', async (req, res) => {
     const { password, submission } = req.body;
 
     if (password !== process.env.ADMIN_PASSWORD) {
@@ -100,7 +97,7 @@ app.post('/api/admin/submissions', async (req, res) => {
 });
 
 // Admin API: Update submission
-app.put('/api/admin/submissions/:id', async (req, res) => {
+router.put('/admin/submissions/:id', async (req, res) => {
     const { password, submission } = req.body;
     const { id } = req.params;
 
@@ -128,7 +125,7 @@ app.put('/api/admin/submissions/:id', async (req, res) => {
 });
 
 // Admin API: Delete submission
-app.delete('/api/admin/submissions/:id', async (req, res) => {
+router.delete('/admin/submissions/:id', async (req, res) => {
     const { password } = req.body;
     const { id } = req.params;
 
@@ -154,6 +151,7 @@ app.delete('/api/admin/submissions/:id', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+app.use('/.netlify/functions/server', router);
+
+module.exports = app;
+module.exports.handler = serverless(app);

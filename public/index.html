@@ -33,6 +33,8 @@
 
     <main>
         <section class="hero-section">
+            <div class="hero-animation left"></div>
+            <div class="hero-animation right"></div>
             <div class="hero-image-container">
                 <img src="hero.png" alt="Escola Startup - FoodMakers" class="hero-main-image">
             </div>
@@ -61,11 +63,73 @@
                     <span class="text">09, 11 E 13 DE FEVEREIRO</span>
                 </div>
                 <div class="detail-item">
+                    <button id="showSchedule" class="schedule-btn">CRONOGRAMA DAS OFICINAS</button>
+                </div>
+                <div class="detail-item">
                     <span class="icon">⏰</span>
                     <span class="text">08:30 ÀS 11:30</span>
                 </div>
             </div>
         </section>
+
+        <!-- Schedule Modal -->
+        <div id="scheduleModal" class="modal-overlay hidden">
+            <div class="modal-content neo-brutalist-modal">
+                <div class="modal-header">
+                    <h2>Cronograma das Oficinas</h2>
+                    <button id="closeSchedule" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="shift-info">Turno Manhã: 08:30 – 11:30</p>
+
+                    <div class="schedule-cascade">
+                        <div class="schedule-item day-1">
+                            <div class="day-label">DIA 1: O CONCEITO E A BASE (09 DE FEVEREIRO)</div>
+                            <div class="day-content">
+                                <p><strong>Gastronomia:</strong> Introdução à ciência do sorvete (equilíbrio de açúcares
+                                    e gorduras) e seleção de frutas tropicais brasileiras. Preparação das bases
+                                    naturais.</p>
+                                <p><strong>Design:</strong> Workshop de Naming e Branding. Uso de IA (como Gemini ou
+                                    ChatGPT) para gerar moodboards e conceitos visuais baseados nas frutas escolhidas.
+                                </p>
+                                <p><strong>Tecnologia:</strong> Introdução à IA Generativa aplicada a negócios. Como
+                                    usar o ChatGPT/Gemini para criar a história da marca (storytelling) e o menu
+                                    descritivo.</p>
+                            </div>
+                        </div>
+
+                        <div class="schedule-item day-2">
+                            <div class="day-label">DIA 2: PRODUÇÃO E DESENVOLVIMENTO (11 DE FEVEREIRO)</div>
+                            <div class="day-content">
+                                <p><strong>Gastronomia:</strong> Batimento dos sorvetes e técnicas de congelamento.
+                                    Finalização com caldas artesanais.</p>
+                                <p><strong>Design:</strong> Criação da identidade visual (logotipo e embalagem digital)
+                                    utilizando ferramentas como Canva e Nano Banana do Gemini.</p>
+                                <p><strong>Tecnologia:</strong> Construção de uma Landing Page ou Catálogo Digital
+                                    Interativo. Os alunos aprenderão a usar ferramentas no-code para criar um canal de
+                                    vendas rápido para o produto que criaram.</p>
+                            </div>
+                        </div>
+
+                        <div class="schedule-item day-3">
+                            <div class="day-label">DIA 3: GRAND EXPO & DEGUSTAÇÃO (13 DE FEVEREIRO)</div>
+                            <div class="day-content">
+                                <p><strong>O Evento:</strong> Um "Demo Day" de gastronomia. Cada grupo terá um balcão
+                                    com:</p>
+                                <ul>
+                                    <li>O sorvete finalizado para degustação.</li>
+                                    <li>A marca exposta em tablets/telas.</li>
+                                    <li>QR Code para o recurso digital de vendas criado.</li>
+                                </ul>
+                                <p><strong>Conversão:</strong> Apresentação da metodologia da Escola StartUp aos
+                                    candidatos, destacando como a integração entre as áreas acelera a entrada no mercado
+                                    de trabalho.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <section class="form-section">
             <div class="form-header">
@@ -90,8 +154,8 @@
 
                 <div class="two-cols">
                     <div class="form-group">
-                        <label for="idade">Idade (15 a 18 anos)</label>
-                        <input type="number" id="idade" name="idade" min="15" max="18" required>
+                        <label for="idade">Idade (14 a 18 anos)</label>
+                        <input type="number" id="idade" name="idade" min="14" max="18" required>
                     </div>
                     <div class="form-group">
                         <label for="bairro">Bairro</label>
@@ -130,6 +194,9 @@
                         class="icon-medium">
                     <span>WHATSAPP: 51 980202116</span>
                 </a>
+                <a href="admin.html"
+                    style="color: inherit; text-decoration: none; opacity: 0.2; font-size: 14px; margin-top: 10px; display: inline-block;"
+                    title="Painel Admin">⚙️</a>
             </div>
         </div>
     </footer>

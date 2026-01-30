@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin | FoodMakers</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .admin-container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .login-box {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 30px;
+            border: 4px solid black;
+            box-shadow: 10px 10px 0px black;
+        }
+
+        .submissions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border: 4px solid black;
+            box-shadow: 10px 10px 0px black;
+        }
+
+        .submissions-table th,
+        .submissions-table td {
+            border: 2px solid black;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .submissions-table th {
+            background: #22c55e;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .submissions-table tr:nth-child(even) {
+            background: #f0f0f0;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .header-admin {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .actions-bar {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .export-btn {
+            background: #a855f7;
+            color: white;
+            padding: 8px 16px;
+            border: 2px solid black;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px black;
+            transition: all 0.2s;
+        }
+
+        .export-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px black;
+        }
+
+        .export-btn.csv {
+            background: #10b981;
+        }
+
+        .btn-action {
+            padding: 5px 10px;
+            border: 2px solid black;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+            box-shadow: 2px 2px 0px black;
+            margin-right: 5px;
+            text-transform: uppercase;
+        }
+
+        .btn-edit {
+            background: var(--primary-yellow);
+            color: black;
+        }
+
+        .btn-delete {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .btn-new {
+            background: var(--primary-purple);
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .btn-action:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-container">
+        <a href="index.html" class="schedule-btn"
+            style="text-decoration: none; margin-bottom: 20px; display: inline-block;">← VOLTAR PARA O SITE</a>
+
+        <!-- Login Section -->
+        <div id="loginSection" class="login-box">
+            <h2 style="margin-bottom: 20px;">Acesso Restrito</h2>
+            <div class="form-group">
+                <label for="adminPassword">Senha de Acesso</label>
+                <input type="password" id="adminPassword" placeholder="Digite a senha...">
+            </div>
+            <button id="loginBtn" class="submit-btn" style="width: 100%; margin-top: 10px;">ENTRAR</button>
+            <p id="errorMsg" class="error hidden" style="margin-top: 10px;"></p>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboardSection" class="hidden">
+            <div class="header-admin">
+                <h1>Inscrições Recebidas</h1>
+                <div style="display: flex; gap: 10px;">
+                    <button id="logoutBtn" class="schedule-btn">SAIR</button>
+                </div>
+            </div>
+
+            <div class="actions-bar">
+                <button id="exportPdf" class="export-btn">BAIXAR PDF</button>
+                <button id="exportCsv" class="export-btn csv">BAIXAR PLANILHA (CSV)</button>
+            </div>
+
+            <button id="newSubBtn" class="submit-btn btn-new" style="max-width: 300px;">+ NOVA INSCRIÇÃO</button>
+
+            <div style="overflow-x: auto;">
+                <table class="submissions-table" id="submissionsTable">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>WhatsApp</th>
+                            <th>Idade</th>
+                            <th>Bairro</th>
+                            <th>Motivação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="submissionsBody">
+                        <!-- Data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div id="crudModal" class="modal-overlay hidden">
+        <div class="neo-brutalist-modal" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 id="modalTitle">Editar Inscrição</h2>
+                <button id="closeCrudModal" class="close-btn">&times;</button>
+            </div>
+            <form id="crudForm">
+                <input type="hidden" id="subId">
+                <div class="form-group">
+                    <label for="subNome">Nome Completo</label>
+                    <input type="text" id="subNome" required>
+                </div>
+                <div class="two-cols">
+                    <div class="form-group">
+                        <label for="subEmail">E-mail</label>
+                        <input type="email" id="subEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subWhatsapp">WhatsApp</label>
+                        <input type="tel" id="subWhatsapp" required>
+                    </div>
+                </div>
+                <div class="two-cols">
+                    <div class="form-group">
+                        <label for="subIdade">Idade</label>
+                        <input type="number" id="subIdade" min="14" max="18" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subBairro">Bairro</label>
+                        <select id="subBairro" required>
+                            <option value="Bom Jesus">Bom Jesus</option>
+                            <option value="Navegantes">Navegantes</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="subMotivacao">Motivação</label>
+                    <textarea id="subMotivacao" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" style="font-size: 1.2rem;">SALVAR INSCRIÇÃO</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Libraries for Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>
